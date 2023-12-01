@@ -5,7 +5,7 @@ const { convert } = require('./html2md')
 
 const fns = []
 // Add the answers to each day as an array of two values (ie, for 3 days, [[p1,p2], [p1,p2], [p1,p2]])
-const answers = []
+const answers = [[56465, 55902]]
 
 function discoverDays() {
   for (let i = 1; i < 26; i++) {
@@ -76,7 +76,7 @@ async function setupDay(day) {
   console.log(`Setting up project for day ${day}`)
   const dayDir = `day-${day}`
 
-  const input = await fetch(`https://adventofcode.com/2022/day/${day}/input`, { headers: { 'Cookie': `session=${dotEnv.session}` } })
+  const input = await fetch(`https://adventofcode.com/2023/day/${day}/input`, { headers: { 'Cookie': `session=${dotEnv.session}` } })
   const text = await input.text()
 
   if (text.includes("Please don't repeatedly request this endpoint before it unlocks!")) {
@@ -88,7 +88,7 @@ async function setupDay(day) {
   }
 
   if (!fs.existsSync(`${dayDir}${sep}readme.md`)) {
-    const desc = await fetch(`https://adventofcode.com/2022/day/${day}`, { headers: { 'Cookie': `session=${dotEnv.session}` } })
+    const desc = await fetch(`https://adventofcode.com/2023/day/${day}`, { headers: { 'Cookie': `session=${dotEnv.session}` } })
     const descText = await desc.text()
     const markdown = convert(descText)
 
