@@ -5,7 +5,7 @@ const { convert } = require('./html2md')
 
 const fns = []
 // Add the answers to each day as an array of two values (ie, for 3 days, [[p1,p2], [p1,p2], [p1,p2]])
-const answers = [[56465, 55902]]
+const answers = [[56465, 55902], [2617, 59795]]
 
 function discoverDays() {
   for (let i = 1; i < 26; i++) {
@@ -13,6 +13,23 @@ function discoverDays() {
       fns.push(require(`./day-${i}/index.js`))
     }
   }
+}
+
+async function run(fn) {
+  const times = []
+  let ans = []
+  for (let i = 0; i < 100; i++) {
+    const result = await fn()
+    times.push(result.map(o => o.ms))
+    if (i == 0) {
+      ans = result.map(o => o.ans)
+    }
+  }
+  // Return avg of both
+  const avg = [0, 1].map(_ => times.reduce((acc, curr) => acc + curr[_], 0) / times.length)
+  const min = [0, 1].map(_ => Math.min(...times.map(o => o[_])))
+  const max = [0, 1].map(_ => Math.max(...times.map(o => o[_])))
+  return { result: [{ ans: ans[0], ms: avg[0] }, { ans: ans[1], ms: avg[1] }], ms: avg[0] + avg[1], min, max }
 }
 
 async function benchmark() {
@@ -26,7 +43,7 @@ async function benchmark() {
   for (let i = 0; i < fns.length; i++) {
     const fn = fns[i]
     const expected = answers[i]
-    const actual = await timeFunction(fn)
+    const actual = await run(fn)
 
     const dayBlurb = `Day ${i + 1} (${Math.round(actual.ms * 100) / 100} ms)`
 
@@ -48,10 +65,10 @@ async function benchmark() {
     rows.push({
       day: (i + 1).toString().padEnd(8, ' '),
       oneResult: actual.result[0].ans.toString().padEnd(10, ' '),
-      oneTime: (Math.round(actual.result[0].ms * 100) / 100).toString().padEnd(10, ' '),
+      oneTime: (Math.round(actual.result[0].ms * 1000) / 1000).toString().padEnd(10, ' '),
       twoResult: actual.result[1].ans.toString().padEnd(10, ' '),
-      twoTime: (Math.round(actual.result[1].ms * 100) / 100).toString().padEnd(10, ' '),
-      totalTime: actual.ms
+      twoTime: (Math.round(actual.result[1].ms * 1000) / 1000).toString().padEnd(10, ' '),
+      totalTime: (Math.round(actual.ms * 1000) / 1000).toString().padEnd(10, ' ')
     })
   }
 

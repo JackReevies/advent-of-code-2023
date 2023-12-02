@@ -14,6 +14,8 @@ Day | Task 1 | ᴍs | Task 2 | ᴍs | Total Execution Time (ᴍs)
 
 ## How to Run
 
+Create a `.env` file containing `session=COOKIE` (where `COOKIE` is your AoC cookie). This is used for downloading the puzzle input.
+
 The goal is to not use any external modules, only those built in to the [node runtime](https://nodejs.org/en/) (this means no package.json). Node v12 and above should work for the puzzles (`node index`), but v18 is required for `node index download day` for the newly supported fetch API
 
 `index.js` in the root directory contains a basic test runner to run each day's tasks and compare answers. This file will be updated with new days as they come.

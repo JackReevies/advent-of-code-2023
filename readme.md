@@ -1,6 +1,6 @@
 ## Advent of Code 2023
 
-![](https://img.shields.io/badge/Language-JS-778528?style=for-the-badge) &nbsp; &nbsp; ![](https://img.shields.io/badge/📅%20Day%20-1-118499?style=for-the-badge) &nbsp; &nbsp;  ![](https://img.shields.io/badge/⭐%20Stars%20-2-b5792a?style=for-the-badge)
+![](https://img.shields.io/badge/Language-JS-778528?style=for-the-badge) &nbsp; &nbsp; ![](https://img.shields.io/badge/📅%20Day%20-2-118499?style=for-the-badge) &nbsp; &nbsp;  ![](https://img.shields.io/badge/⭐%20Stars%20-4-b5792a?style=for-the-badge)
 
 My solutions to the [advent of code 2023](https://adventofcode.com/2023/)
 
@@ -8,11 +8,14 @@ My solutions to the [advent of code 2023](https://adventofcode.com/2023/)
 
 Day | Task 1 | ᴍs | Task 2 | ᴍs | Total Execution Time (ᴍs)
 -|-|-|-|-|-
-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|56465&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|1.42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|55902&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|5.59&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|18.8949
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|56465&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.691&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|55902&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|5.514&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|6.205&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2617&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.279&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|59795&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.262&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.54&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <br />
 
 ## How to Run
+
+Create a `.env` file containing `session=COOKIE` (where `COOKIE` is your AoC cookie). This is used for downloading the puzzle input.
 
 The goal is to not use any external modules, only those built in to the [node runtime](https://nodejs.org/en/) (this means no package.json). Node v12 and above should work for the puzzles (`node index`), but v18 is required for `node index download day` for the newly supported fetch API
 
