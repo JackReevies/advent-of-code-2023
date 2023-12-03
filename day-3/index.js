@@ -9,14 +9,15 @@ function partOne(numbers) {
   const maxX = numbers[0].length
   const maxY = numbers.length
 
+  let results = []
   let numBuilder = ''
   let sum = 0
 
   for (let y = 0; y < maxY; y++) {
     const line = numbers[y]
-    for (let x = 0; x < maxX; x++) {
+    for (let x = 1; x < maxX; x++) {
       const char = line[x]
-      if (!Number.isNaN(parseInt(char))) {
+      if (char.match(/[0-9]/g)) {
         numBuilder += char
         continue
       }
@@ -25,14 +26,11 @@ function partOne(numbers) {
 
       const num = parseInt(numBuilder)
 
-      if (Number.isNaN(num)) {
-        throw new Error(`Shits fucked`)
-      }
-
       numBuilder = ''
 
       const result = surroundedByASymbol(numbers, num, x - 1, y)
-      if (result.symbol) {
+      if (result?.symbol) {
+        results.push(result)
         //console.log(`${num} at ${x}, ${y} has a symbol near it`)
         sum += num
         continue
@@ -42,85 +40,50 @@ function partOne(numbers) {
     }
   }
 
-  return sum
+  return { sum, results }
 }
 
-function surroundedByASymbol(grid, number, endX, endY) {
+function surroundedByASymbol(grid, number, numX, numY) {
   const numStr = number.toString()
   const length = numStr.length
 
   const adjacents = []
-  let symbol = false
-  for (let y = endY - 1; y <= endY + 1; y++) {
-    //if (y < 0 || y === grid.length) continue
-    for (let x = endX - length; x <= endX + 1; x++) {
-      if (x < 0) continue
-      const char = grid[y]?.[x]
-      adjacents.push({ x, y, char, coord: `${x}, ${y}` })
+  const minY = Math.max(0, numY - 1)
+  const maxY = Math.min(numY + 1, grid.length - 1)
+
+  const minX = Math.max(0, numX - length)
+  const maxX = Math.min(numX + 2, grid[0].length)
+
+  for (let y = minY; y <= maxY; y++) {
+    for (let x = minX; x < maxX; x++) {
+      const char = grid[y][x]
+      adjacents.push({ char, coord: `${x}, ${y}` })
       if (isSymbol(char)) {
-        symbol = true
+        return { symbol: true, num: number, adjacents }
       }
     }
   }
-
-  if (adjacents.length !== (length + 2) * 3) {
-    console.log(`Adjacents unexpected length (${adjacents.length})`)
-  }
-  return { symbol, adjacents }
 }
 
 function isSymbol(char) {
-  return Number.isNaN(parseInt(char)) && char !== '.' && !!char
+  return char?.match(/[^0-9.]/g)
 }
 
-function partTwo(numbers) {
-  // Pad grid
-  for (let i = 0; i < numbers.length; i++) {
-    numbers[i] = '.' + numbers[i] + '.'
-  }
+function partTwo(results) {
+  const gears = {}
 
-  const maxX = numbers[0].length
-  const maxY = numbers.length
-
-  let numBuilder = ''
-  let sum = 0
-
-  let gears = {} // Record<coord, number[]>
-
-  for (let y = 0; y < maxY; y++) {
-    const line = numbers[y]
-    for (let x = 0; x < maxX; x++) {
-      const char = line[x]
-      if (!Number.isNaN(parseInt(char))) {
-        numBuilder += char
-        continue
+  for (const result of results) {
+    const gear = result.adjacents.find(o => o.char === '*')
+    if (gear) {
+      // Number has a gear next to it
+      if (!gears[gear.coord]) {
+        gears[gear.coord] = []
       }
-
-      if (numBuilder.length === 0) continue
-
-      const num = parseInt(numBuilder)
-
-      if (Number.isNaN(num)) {
-        throw new Error(`Shits fucked`)
-      }
-
-      numBuilder = ''
-
-      const result = surroundedByASymbol(numbers, num, x - 1, y)
-      if (result.symbol) {
-        //console.log(`${num} at ${x}, ${y} has a symbol near it`)
-        const gear = result.adjacents.find(o => o.char === '*')
-        if (gear) {
-          // Number has a gear next to it
-          if (!gears[gear.coord]) {
-            gears[gear.coord] = []
-          }
-          gears[gear.coord].push(num)
-        }
-        continue
-      }
+      gears[gear.coord].push(result.num)
     }
+    continue
   }
+
 
   const gearsWithTwoNumbers = Object.values(gears).filter(o => o.length === 2)
   const ratios = gearsWithTwoNumbers.map(o => o[0] * o[1])
@@ -131,8 +94,8 @@ async function start() {
   const numbers = getInput(`${__dirname}/input.txt`)
 
   const task1 = await timeFunction(() => partOne(numbers))
-  const task2 = await timeFunction(() => partTwo(numbers))
-  return [{ ans: task1.result, ms: task1.ms }, { ans: task2.result, ms: task2.ms }]
+  const task2 = await timeFunction(() => partTwo(task1.result.results))
+  return [{ ans: task1.result.sum, ms: task1.ms }, { ans: task2.result, ms: task2.ms }]
 }
 
 module.exports = start
