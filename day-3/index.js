@@ -81,7 +81,6 @@ function partTwo(results) {
       }
       gears[gear.coord].push(result.num)
     }
-    continue
   }
 
 

@@ -5,7 +5,7 @@ const { convert } = require('./html2md')
 
 const fns = []
 // Add the answers to each day as an array of two values (ie, for 3 days, [[p1,p2], [p1,p2], [p1,p2]])
-const answers = [[56465, 55902], [2617, 59795], [535351, 87287096]]
+const answers = [[56465, 55902], [2617, 59795], [535351, 87287096], [25183, 5667240]]
 
 function discoverDays() {
   for (let i = 1; i < 26; i++) {
