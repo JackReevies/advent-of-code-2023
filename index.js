@@ -5,7 +5,8 @@ const { convert } = require('./html2md')
 
 const fns = []
 // Add the answers to each day as an array of two values (ie, for 3 days, [[p1,p2], [p1,p2], [p1,p2]])
-const answers = [[56465, 55902], [2617, 59795], [535351, 87287096], [25183, 5667240]]
+const answers = [[56465, 55902], [2617, 59795], [535351, 87287096], [25183, 5667240], [324724204, 104070862]]
+const excludeDays = [5]
 
 function discoverDays() {
   for (let i = 1; i < 26; i++) {
@@ -43,7 +44,7 @@ async function benchmark() {
   for (let i = 0; i < fns.length; i++) {
     const fn = fns[i]
     const expected = answers[i]
-    const actual = await run(fn)
+    const actual = excludeDays.includes(i + 1) ? await timeFunction(fn) : await run(fn)
 
     const dayBlurb = `Day ${i + 1} (${Math.round(actual.ms * 100) / 100} ms)`
 
