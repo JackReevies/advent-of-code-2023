@@ -92,7 +92,7 @@ function partTwo(numbers) {
     }
     //console.log(`Completed ${c} of ${data.seeds.length} (lowest so far is ${lowest}) in ${Math.floor((Date.now() - start) / 1000)}s (total time: ${Math.floor((Date.now() - totalStart) / 1000)}s)`)
 
-    if (c === 2) return lowest
+    // if (c === 2) return lowest
   }
 
   //console.log(`lowest is ${lowest}`)
