@@ -1,4 +1,5 @@
 const { timeFunction, getInput } = require('../common')
+const part2 = require('./index-2')
 
 function scoreHand(hand) {
   // ie 32T3K
@@ -90,8 +91,8 @@ function partOne(numbers) {
   }
 
   hands.sort((a, b) => b.score - a.score).reverse()
-  console.log()
-  hands.map(o => console.log(JSON.stringify(o)))
+  //console.log()
+  //hands.map(o => console.log(JSON.stringify(o)))
 
   let sum = 0
   for (let i = 0; i < hands.length; i++) {
@@ -113,10 +114,9 @@ async function start() {
   const numbers = getInput(`${__dirname}/input.txt`)
 
   const task1 = await timeFunction(() => partOne(numbers))
-  const task2 = await timeFunction(() => partTwo(numbers))
-  console.log(JSON.stringify({ task1, task2 }))
+  const task2 = await timeFunction(() => part2(numbers))
+  //console.log(JSON.stringify({ task1, task2 }))
   return [{ ans: task1.result, ms: task1.ms }, { ans: task2.result, ms: task2.ms }]
 }
 
-start()
 module.exports = start

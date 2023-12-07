@@ -1,6 +1,6 @@
 ## Advent of Code 2023
 
-![](https://img.shields.io/badge/Language-JS-778528?style=for-the-badge) &nbsp; &nbsp; ![](https://img.shields.io/badge/📅%20Day%20-6-118499?style=for-the-badge) &nbsp; &nbsp;  ![](https://img.shields.io/badge/⭐%20Stars%20-10-b5792a?style=for-the-badge)
+![](https://img.shields.io/badge/Language-JS-778528?style=for-the-badge) &nbsp; &nbsp; ![](https://img.shields.io/badge/📅%20Day%20-7-118499?style=for-the-badge) &nbsp; &nbsp;  ![](https://img.shields.io/badge/⭐%20Stars%20-12-b5792a?style=for-the-badge)
 
 My solutions to the [advent of code 2023](https://adventofcode.com/2023/)
 
@@ -8,11 +8,12 @@ My solutions to the [advent of code 2023](https://adventofcode.com/2023/)
 
 Day | Task 1 | ᴍs | Task 2 | ᴍs | Total Execution Time (ᴍs)
 -|-|-|-|-|-
-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|56465&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.568&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|55902&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|5.581&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|6.15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2617&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.39&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|59795&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.336&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.727&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|535351&nbsp;&nbsp;&nbsp;&nbsp;|2.153&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|87287096&nbsp;&nbsp;|0.442&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2.595&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|25183&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|1.412&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|5667240&nbsp;&nbsp;&nbsp;|1.446&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2.858&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|1195150&nbsp;&nbsp;&nbsp;|0.021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|42550411&nbsp;&nbsp;|52.132&nbsp;&nbsp;&nbsp;&nbsp;|52.153&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|56465&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.581&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|55902&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|5.563&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|6.143&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2617&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.376&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|59795&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.333&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|0.709&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|535351&nbsp;&nbsp;&nbsp;&nbsp;|2.394&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|87287096&nbsp;&nbsp;|0.499&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2.893&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|25183&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|1.423&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|5667240&nbsp;&nbsp;&nbsp;|1.437&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|2.86&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|1195150&nbsp;&nbsp;&nbsp;|0.021&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|42550411&nbsp;&nbsp;|53.767&nbsp;&nbsp;&nbsp;&nbsp;|53.788&nbsp;&nbsp;&nbsp;&nbsp;
+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|248559379&nbsp;|5.659&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|249631254&nbsp;|8.839&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|14.497&nbsp;&nbsp;&nbsp;&nbsp;
 
 <br />
 
