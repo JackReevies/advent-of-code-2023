@@ -62,11 +62,6 @@ function calcDistances(grid, insertions) {
   for (let y = 0; y < grid.length; y++) {
     if (!rowHasGalaxy(grid[y])) {
 
-      // for (let i = 0; i < insertions; i++) {
-      //   grid.splice(y, 0, Array(grid[0].length).fill('.'))
-      //   y++
-      // }
-
       const galaxiesPushed = galaxyLocations.filter(galaxy => galaxy.y > y)
       galaxiesPushed.forEach(galaxy => galaxy.driftY += insertions)
     }
@@ -75,25 +70,10 @@ function calcDistances(grid, insertions) {
   for (let x = 0; x < grid[0].length; x++) {
     if (!columnHasGalaxy(grid, x)) {
 
-      // for (let i = 0; i < insertions; i++) {
-      //   grid.forEach(row => row.splice(x, 0, '.'))
-      //   x++
-      // }
-
       const galaxiesPushed = galaxyLocations.filter(galaxy => galaxy.x > x)
       galaxiesPushed.forEach(galaxy => galaxy.driftX += insertions)
     }
   }
-
-  // // Get locations of #
-  // const galaxyLocations = []
-  // grid.forEach((row, y) => {
-  //   row.forEach((column, x) => {
-  //     if (column === '#') {
-  //       galaxyLocations.push({ x, y })
-  //     }
-  //   })
-  // })
 
   // Resolve the drifts
   galaxyLocations.forEach(galaxy => {
@@ -118,7 +98,7 @@ function calcDistances(grid, insertions) {
 const coord = ({ x, y }) => `[${x}, ${y}]`
 
 function partOne(grid) {
-  const newGrid = JSON.parse(JSON.stringify(grid))
+  const newGrid = grid
   const result = calcDistances(newGrid, 1)
 
   return result.sum
@@ -141,8 +121,7 @@ function columnHasGalaxy(grid, column) {
 }
 
 function partTwo(grid) {
-  const newGrid = JSON.parse(JSON.stringify(grid))
-  const result = calcDistances(newGrid, 999_999)
+  const result = calcDistances(grid, 999_999)
   return result.sum
 }
 
