@@ -5,9 +5,9 @@ const { convert } = require('./html2md')
 
 const fns = []
 // Add the answers to each day as an array of two values (ie, for 3 days, [[p1,p2], [p1,p2], [p1,p2]])
-const answers = [[56465, 55902], [2617, 59795], [535351, 87287096], [25183, 5667240], [324724204, 104070862], [1195150, 42550411], [248559379, 249631254], [21389, 21083806112641], [2098530125, 1016], [6867, 595], [9550717, 648458253817], [7173, -1], [29846, 25401], [108144, 108404], [508498, 279116], [7046, 7313]]
+const answers = [[56465, 55902], [2617, 59795], [535351, 87287096], [25183, 5667240], [324724204, 104070862], [1195150, 42550411], [248559379, 249631254], [21389, 21083806112641], [2098530125, 1016], [6867, 595], [9550717, 648458253817], [7173, -1], [29846, 25401], [108144, 108404], [508498, 279116], [7046, 7313], [0, 0], [56678, 79088855654037], [362930, 116365820987729]]
 const excludeDays = []
-const runOnce = [5, 8, 10, 12, 16]
+const runOnce = [5, 8, 10, 12, 16, 18, 19]
 
 function discoverDays() {
   for (let i = 1; i < 26; i++) {
@@ -54,24 +54,33 @@ async function benchmark() {
     console.log(dayBlurb)
     console.log(''.padStart(dayBlurb.length, '-'))
 
-    expected.forEach((val, i) => {
+    const byTask = expected.map((val, i) => {
       const actualResult = actual.result[i]
       if (val === actualResult.ans) {
         console.log(`Task ${i + 1} is Correct (${val}) (took ${actualResult.ms}ms)`)
         stars++
+        return true
       } else {
         console.error(`Task ${i + 1} is Wrong (expected ${val} but got ${actualResult.ans}) (took ${actualResult.ms}ms)`)
       }
     })
     console.log('\n'.padStart(dayBlurb.length, '='))
     maxDay = i + 1
+
+    const p1Result = byTask[0] ? actual.result[0].ans : '❌'
+    const p1Time = byTask[0] ? Math.round(actual.result[0].ms * 1000) / 1000 : 0
+    const p2Result = byTask[1] ? actual.result[1].ans : '❌'
+    const p2Time = byTask[1] ? Math.round(actual.result[1].ms * 1000) / 1000 : 0
+
+    const totalTime = byTask[0] && byTask[1] ? Math.round(actual.ms * 1000) / 1000 : byTask[0] ? p1Time : 0
+
     rows.push({
       day: (i + 1).toString().padEnd(8, ' '),
-      oneResult: actual.result[0].ans.toString().padEnd(10, ' '),
-      oneTime: (Math.round(actual.result[0].ms * 1000) / 1000).toString().padEnd(10, ' '),
-      twoResult: actual.result[1].ans.toString().padEnd(10, ' '),
-      twoTime: (Math.round(actual.result[1].ms * 1000) / 1000).toString().padEnd(10, ' '),
-      totalTime: (Math.round(actual.ms * 1000) / 1000).toString().padEnd(10, ' ')
+      oneResult: p1Result.toString().padEnd(10, ' '),
+      oneTime: p1Time.toString().padEnd(10, ' '),
+      twoResult: p2Result.toString().padEnd(10, ' '),
+      twoTime: p2Time.toString().padEnd(10, ' '),
+      totalTime: totalTime.toString().padEnd(10, ' ')
     })
   }
 
