@@ -86,3 +86,16 @@ module.exports.getAdjacent4 = function getAdjacent4(grid, inX, inY) {
   tryGet(inX, inY + 1) // Down
   return adjacents
 }
+
+module.exports.printGrid = function printGrid(grid) {
+  // Print grid
+
+  for (let y = 0; y < grid.length; y++) {
+    const row = grid[y]
+    let str = ''
+    for (let x = 0; x < row.length; x++) {
+      str += row[x]
+    }
+    console.log(str)
+  }
+}
